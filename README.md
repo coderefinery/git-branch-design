@@ -1,7 +1,5 @@
 
 
-# Collaborative distributed version control lesson
+# [Git branch design lesson](https://coderefinery.github.io/git-branch-design/)
 
-## Credit and license
-
-- https://coderefinery.github.io/git-collaborative/license/
+- [Credit and license](https://coderefinery.github.io/git-branch-design/license/)
