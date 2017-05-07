@@ -3,6 +3,8 @@ layout: episode
 title: "Git rebase and commit squashing exercise"
 teaching: 0
 exercises: 15
+questions:
+  - How can we commit often and still arrive at an understandable history?
 objectives:
   - Learn how to clean up branches.
 ---
