@@ -4,9 +4,9 @@ title: "Avoiding conflicts"
 teaching: 10
 exercises: 0
 questions:
-  - "How should we organize branches to avoid conflicts?"
+  - How should we organize branches to avoid conflicts?
 objectives:
-  - "Organize branches to avoid conflicts or double work."
+  - Avoid conflicts, avoid double work, avoid losing patches.
 ---
 
 ## Avoiding conflicts
@@ -16,7 +16,7 @@ objectives:
 - Fortran people: modifying common blocks often causes conflicts.
 - Modifying global data often causes conflicts.
 - Monolithic entangled spaghetti-code maximizes risk of conflicts.
-- Modular programing minimizes risk of conflicts.
+- Modular programming minimizes risk of conflicts.
 - Ball-of-mud branches for "everything" maximize risk of conflicts.
 - One branch for one task only.
 - Resolve conflicts early.
@@ -35,7 +35,7 @@ objectives:
 - Or you see some ugly code and want to clean it up.
 - You are a responsible developer and you do not want to leave this defect.
 - You decide to fix this defect right on your new branch "while at it".
-- This is a **bad idea** - why?
+- This is probably a **bad idea** - why?
 
 ![]({{ site.baseurl }}/img/git-fix-1.svg)
 
@@ -46,7 +46,7 @@ objectives:
       with your new feature.
     - Before you commit a change, think: "who needs this change?".
     - Based on the answer select the appropriate branch.
-    - Develop separate features on separate branches and be very strict and disciplined with this.
+    - **Develop separate features on separate branches and be very strict and disciplined with this.**
 
 - Better solution
     - Fix it on `master`, so other developers can see it.
@@ -64,7 +64,7 @@ objectives:
 
 OK I made a commit to the "wrong" branch and it is a public branch, what now?
 
-`git cherry-pick` the commit to the "right" branch:
+Solution: `git cherry-pick` the commit to the "right" branch:
 
 ![]({{ site.baseurl }}/img/git-fix-3.svg)
 
@@ -72,7 +72,7 @@ OK I made a commit to the "wrong" branch and it is a public branch, what now?
 
 ## Rewinding the local master branch
 
-You made few commits to the local `master` branch.
+You made few commits to the *local* `master` branch.
 You then realize that it broke some tests but you have no time now to fix them.
 So you wish you had committed them to an experimental branch instead.
 
@@ -99,7 +99,7 @@ $ git reset --hard c2  # on master
 ![]({{ site.baseurl }}/img/git-split-branch-3.svg)
 
 Another job well done.
-However this should not be done if the commits have already been shared with others.
+**However, this should not be done if the commits have already been shared with others.**
 
 ---
 
@@ -113,14 +113,14 @@ However this should not be done if the commits have already been shared with oth
 
 ## When is a good moment to merge?
 
-- Feature branch merges to `master` typically once (at the end of its lifetime).
-- But there may be good reasons for merging branch to `master` more often (release branch).
+- Feature branches merge to `master` typically once (at the end of their lifetime).
+- But there may be good reasons for merging branches to `master` more often (release branch).
 - Never merge a feature branch into another feature branch (branch pollution; discuss why).
-- For modular projects with write-protected `master` and code review and very high discipline.
+- For modular projects with write-protected `master` and code review and very high discipline:
     - You typically should not merge `master` except the occasional `git cherry-pick`.
-- For entangled projects where most of the development happens directly on `master`.
+- For entangled projects where most of the development happens directly on `master`:
     - It is good to merge `master` to your topic branch often to stay in sync with main development line.
-    - Merge `master` to your branch ideally should never conflict.
+    - A Merge from `master` to your branch ideally should never conflict.
     - But it will sometimes, resolve conflicts early.
 
 ---
@@ -138,12 +138,12 @@ However this should not be done if the commits have already been shared with oth
 - I develop `feature-a`.
 - My colleague develops `feature-b`.
 - Both are not ready yet to go into the main line.
-- How can we test them together?
+- How can we test their combination?
 - Do not cross-merge feature branches.
-- Reason: if `feature-a` becomes ready, it cannot be integrated to the main line.
+- Reason: if `feature-a` becomes ready, it cannot be integrated to the main line
   because it is then diluted with `feature-b`.
 - It is easy to make soup out of vegetables, it is difficult to separate a vegetable out of a soup.
 - Test combinations on integration branches.
-- Integration branches only integrate, we do not "work" on them.
+- Integration branches only integrate, we do not "work" (commit) on them.
 - Same holds for testing combinations with the main line.
 - The main line should ideally be an integration branch.
