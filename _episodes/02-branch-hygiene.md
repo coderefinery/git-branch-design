@@ -4,9 +4,9 @@ title: "Branch hygiene"
 teaching: 10
 exercises: 0
 questions:
-  - "Why is the Git log history important?"
+  - Why is the Git log history important?
 objectives:
-  - "Learn how to name branches."
+  - Learn how to name branches.
 ---
 
 ## Branch naming
@@ -32,20 +32,17 @@ $ git branch -r | grep joe
 - Document where it is.
 - Organize branches according to features, not according to groups of people.
 - Good: branches `feature-a`, `feature-b`, `feature-c`.
-- Bad: branches `stockholm`, `san_francisco`, `helsinki`.
-- Reason: `stockholm`, `san_francisco`, and `helsinki` will either diverge
+- Bad: branches `stockholm`, `san-francisco`, `helsinki`.
+- Reason: `stockholm`, `san-francisco`, and `helsinki` will either diverge
   (three main development lines) or somebody will spend a heroic effort to keep
   them synchronized.
 
 ---
 
-## Every commit on the main development line should compile
+## Every commit on the main development line should build/compile
 
 - Sometimes you want to find a commit in the past that broke some functionality.
-- When using `git bisect` (we will exercise `git bisect` later)
-  you will see that it is very helpful if all commits compile.
-- On the other hand you will see that it is annoying if you hit a commit that does not compile.
-- This is why we insist so much on a compiling main development line with nice history.
+- When using `git bisect` it is very helpful if all commits build/compile.
 - There is no reason to commit broken or unfinished code to the main development line: for this we have branches.
 
 ---
@@ -80,5 +77,5 @@ aa25177 feature B
 - The final state of the actual code is identical.
 - Alternative to `git reset --soft` is an interactive rebase.
 - We recommend to create commits on the main development line which are nice logical units.
-- Commits should be pickable (not too large not too small for a `cherry-pick`).
+- Commits should be pickable (not too large not too small for a `git cherry-pick`).
 - Avoid ball-of-mud commits.
