@@ -4,7 +4,7 @@ title: "Git rebase and commit squashing exercise"
 teaching: 0
 exercises: 15
 objectives:
-  - "Learn how to clean up branches."
+  - Learn how to clean up branches.
 ---
 
 ## Git rebase and commit squashing exercise
@@ -67,7 +67,7 @@ In other words instead of this history:
 
 ![]({{ site.baseurl }}/img/rebase-exercise-1.svg)
 
-We wish to first rebasing the commits:
+We wish to first rebase the commits:
 
 ![]({{ site.baseurl }}/img/rebase-exercise-2.svg)
 
@@ -77,3 +77,12 @@ And in a second step squash the commits into one:
 
 Verify the steps and the result with `git status` and `git log`.
 Verify the history and also that the script still works after the operation.
+
+
+### Hints
+
+```shell
+$ git rebase master         # rebases current branch on top of master
+$ git reset --soft abc123   # move current branch back to commit abc123
+                            # and stage all modifications after abc123
+```
