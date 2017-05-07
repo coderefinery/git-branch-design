@@ -12,7 +12,7 @@ objectives:
 ## [Vincent Driessen model](http://nvie.com/posts/a-successful-git-branching-model/)
 
 
-<img src="{{ site.baseurl }}/img/branches/nvie-model.png" style="height: 600px;"/>
+<img src="{{ site.baseurl }}/img/nvie-model.png" style="height: 600px;"/>
 
 (c) Vincent Driessen, licensed under CC BY-SA.
 
@@ -32,7 +32,7 @@ objectives:
 
 ## Alternative: separate branch for each major release
 
-![]({{ site.baseurl }}/img/branches/tree-model.svg)
+![]({{ site.baseurl }}/img/tree-model.svg)
 
 - We recommend to name release branches e.g. `release-2.x` or `stable-2.x`.
 - It is then crystal clear where the main development line is.

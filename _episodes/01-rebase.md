@@ -16,7 +16,7 @@ objectives:
 To illustrate rebasing we consider the following situation - we wish to merge
 `master` into `devel`:
 
-![]({{ site.baseurl }}/img/branches/pre-rebase.svg)
+![]({{ site.baseurl }}/img/pre-rebase.svg)
 
 Now you know how to do it:
 
@@ -27,7 +27,7 @@ $ git merge master
 
 This creates a merge commit:
 
-![]({{ site.baseurl }}/img/branches/git-branch-08.svg)
+![]({{ site.baseurl }}/img/git-branch-08.svg)
 
 
 But there is an alternative:
@@ -37,7 +37,7 @@ $ git checkout devel
 $ git rebase master
 ```
 
-![]({{ site.baseurl }}/img/branches/rebase.svg)
+![]({{ site.baseurl }}/img/rebase.svg)
 
 - `git rebase` replays the branch commits `b1` to `b3` on top of `master`.
 - As if they were committed after `c5`.
@@ -53,4 +53,4 @@ $ git rebase master
   (history has changed).
 - Reference: "Treehouse of Horror V: Time and Punishment", The Simpsons (1994).
 
-![]({{ site.baseurl }}/img/branches/simpsons.jpg)
+![]({{ site.baseurl }}/img/simpsons.jpg)
