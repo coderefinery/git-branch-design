@@ -12,7 +12,7 @@ objectives:
 ## Branch naming
 
 - Name your local branches such that you will recognize them 3 months later.
-- "test", "foo", "debug", "mybranch" are not good branch names.
+- "test2", "foo", "debug", "mybranch" are not good branch names.
 - Give descriptive names to remote branches.
 - For topic branches we recommend to name them "author/topic" (example `joe/new-integrator`).
 - Then everybody knows who is to be contacted about this branch (e.g. stale branches).
@@ -23,13 +23,13 @@ $ git branch -r | grep joe
 ```
 
 - Name bugfix branches after the issue/ticket (e.g. `issue-137`).
-- For release branches we recommend e.g. `release-2.x` or `stable-2.x`.
+- For release branches we recommend e.g. `release/2.x` or `stable-2.x`.
 
 ---
 
 ## Always have only one main development line
 
-- Document where it is.
+- Document where it is (there can be many forks, do not leave doubt about where the main line is).
 - Organize branches according to features, not according to groups of people.
 - Good: branches `feature-a`, `feature-b`, `feature-c`.
 - Bad: branches `stockholm`, `san-francisco`, `helsinki`.
@@ -49,7 +49,7 @@ $ git branch -r | grep joe
 
 ## Branch hygiene
 
-Often we have this situation:
+Often we have this situation (newest commit is on top):
 
 ```shell
 $ git log --oneline

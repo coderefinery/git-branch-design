@@ -17,15 +17,19 @@ objectives:
 (c) Vincent Driessen, licensed under CC BY-SA.
 
 - [Link to original post](http://nvie.com/posts/a-successful-git-branching-model/).
-- Very popular.
+- Very popular and highly visible.
 - Two long-lived branches: `develop` and `master`.
 - New features are developed on feature branches.
 - Feature branches branch off from `develop`.
 - `master` is the latest stable release by definition.
+- `master` holds all release versions.
 - Everything merged to `develop` is ready to be released.
-- Critique (personal opinion):
-    - Naming is unfortunate and often confuses coworkers (rename `develop` to `master` and `master` to `stable`).
-    - Model is not ideal if you need to support past versions and publish patches for past versions.
+
+
+### Critique of this model
+
+- Naming is unfortunate and often confuses coworkers (rename `develop` to `master` and `master` to `stable`).
+- Model is not ideal if you need to support past versions and publish patches for past versions.
 - Good if you do not distribute the stable release (e.g. if you run it on your servers).
 
 ---
@@ -68,14 +72,12 @@ objectives:
 - Tags are also just pointers to commits.
 - While branches are mutable, tags are (typically) immutable.
 - Tags can carry extra annotation.
+- Use annotated tags (then it is clear who created the tag).
 - Always tag your releases:
 
 ```shell
-$ git tag                              # list all tags
-$ git tag -a v1.5 -m 'my version 1.4'  # create annotated tag
-$ git tag v1.5                         # create lightweight tag
-$ git push origin v1.5                 # share tag to upstream (origin)
-$ git push origin --tags               # push all tags
+$ git tag                            # list all tags
+$ git tag -a v1.5 -m 'release v1.5'  # create annotated tag
+$ git push origin v1.5               # share tag to upstream (origin)
+$ git push origin --tags             # push all tags
 ```
-
-- Use annotated tags (then it is clear who created the tag).

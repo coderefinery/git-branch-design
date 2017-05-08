@@ -84,7 +84,7 @@ Verify the history and also that the script still works after the operation.
 ### Hints
 
 ```shell
-$ git rebase master         # rebases current branch on top of master
-$ git reset --soft abc123   # move current branch back to commit abc123
-                            # and stage all modifications after abc123
+$ git rebase master         # moves current branch commits behind master
+$ git reset --soft abc123   # move current branch pointer back to commit abc123
+                            # and stage all modifications that came after abc123
 ```

@@ -29,6 +29,8 @@ objectives:
 
 ## Develop separate features on separate branches
 
+Common situation:
+
 - You create a branch for your new feature that you are working on.
 - While working on your feature you discover a defect or bug that has nothing to do
   with your new feature.
@@ -40,12 +42,13 @@ objectives:
 ![]({{ site.baseurl }}/img/git-fix-1.svg)
 
 - Reasoning
-    - If you fix it on your branch other people will not see it.
+    - If you fix it on your branch other people might not see it.
     - You may want to merge it to `master` but you cannot since your new feature is not ready yet.
     - Perhaps somebody else will fix it on master in a different way and then it will conflict
       with your new feature.
     - Before you commit a change, think: "who needs this change?".
     - Based on the answer select the appropriate branch.
+    - **In general apply changes as close to the trunk as possible.**
     - **Develop separate features on separate branches and be very strict and disciplined with this.**
 
 - Better solution
@@ -62,7 +65,8 @@ objectives:
 
 ## Wrong branch - what now?
 
-OK I made a commit to the "wrong" branch and it is a public branch, what now?
+> *Help! I made a commit to the "wrong" branch and it is a public branch and I was told
+> I should not edit public commits, what now?*
 
 Solution: `git cherry-pick` the commit to the "right" branch:
 
@@ -144,6 +148,6 @@ Another job well done.
   because it is then diluted with `feature-b`.
 - It is easy to make soup out of vegetables, it is difficult to separate a vegetable out of a soup.
 - Test combinations on integration branches.
-- Integration branches only integrate, we do not "work" (commit) on them.
+- Integration branches only receive merges, we do not "work" on them.
 - Same holds for testing combinations with the main line.
 - The main line should ideally be an integration branch.

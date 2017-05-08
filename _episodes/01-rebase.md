@@ -6,7 +6,6 @@ exercises: 0
 questions:
   - What is the advantage of merging?
   - What is the advantage of rebasing?
-  - How does rebasing affect testing?
 objectives:
   - Obtain a mental representation of the rebase model.
 ---
@@ -30,7 +29,8 @@ This creates a merge commit:
 ![]({{ site.baseurl }}/img/git-branch-08.svg)
 
 
-But there is an alternative:
+But there is an alternative for integrating `master` commits into the `devel`
+branch:
 
 ```shell
 $ git checkout devel
@@ -57,3 +57,9 @@ $ git rebase master
 <br>
 <br>
 <img src="{{ site.baseurl }}/img/simpsons.jpg" width="40%">
+
+---
+
+## Question
+
+- How does rebasing affect testing?
