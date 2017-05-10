@@ -26,34 +26,39 @@ objectives:
 - Everything merged to `develop` is ready to be released.
 
 
-### Critique of this model
+### Observations from real life use of this model
 
-- Naming is unfortunate and often confuses coworkers (rename `develop` to `master` and `master` to `stable`).
+- If the project is typically cloned by users, default branch should be `master`
+- If the project is typically cloned by developers, default branch should be `develop`
+- If the project is typically cloned by developers and the default branch is `master`, then there is confusion and developers either complain about finding only old code or they commit to the wrong branch.
+- Less confusing might be to rename `develop` to `master` and `master` to `stable`.
 - Model is not ideal if you need to support past versions and publish patches for past versions.
+- In the [Vincent Driessen model](http://nvie.com/posts/a-successful-git-branching-model/)
+  every commit on the `master` branch is a new release by definition but publishing patches to
+  past releases leads to release commits which are not on the `master` branch.
+- The [Vincent Driessen model](http://nvie.com/posts/a-successful-git-branching-model/) model
+  offers no protocol for discriminating feature pull requests (PRs) based on
+  their target major or minor version. For maintainers it may therefore be
+  difficult to accept an API-preserving feature PR after having accepted an
+  API-breaking feature PR. For contributors it may be difficult to communicate
+  the release visibility intent of a patch.
 - Good if you do not distribute the stable release (e.g. if you run it on your servers).
 
+
 ---
 
-## Alternative: separate branch for each major release
+## Semantic branching model
 
-![]({{ site.baseurl }}/img/tree-model.svg)
+<img src="{{ site.baseurl }}/img/branching-model.svg" alt="Branching model" width="90%">
 
-- We recommend to name release branches e.g. `release-2.x` or `stable-2.x`.
-- It is then crystal clear where the main development line is.
-- Does not require to create new branches for patches of past versions.
+- Based on [semantic versioning](http://semver.org).
+- [https://dev-cafe.github.io/branching-model/](https://dev-cafe.github.io/branching-model/)
 - Good if you distribute code and support past versions.
-- Patches need to be applied to the oldest supported release branch and cherry-picked or merged
-  "up" to the main line and all supported release branches.
-- We never merge `master` to release branches.
-- The `master` branch ideally only receives merges and no direct commits.
-
----
-
-## Alternative: separate branch for each minor release
-
-- [https://github.com/robertodr/branching-model-discussion](https://github.com/robertodr/branching-model-discussion)
-- API-preserving changes are submitted towards minor or major release branches
-- API-breaking changes are submitted towards `master`
+- Separate development lines towards major, minor, or patch release.
+- Communicate to contributors the meaning and effect of each branch.
+- Communicate to maintainers the release visibility intent for each patch.
+- Make it clear and simple to decide both for contributors and maintainers
+  whether patches affect the next major, minor, or patch version.
 
 ---
 
