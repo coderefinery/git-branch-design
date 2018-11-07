@@ -8,6 +8,9 @@ questions:
   - What is the advantage of rebasing?
 objectives:
   - Obtain a mental representation of the rebase model.
+keypoints:
+  - Rebasing creates nice linear history without merge commits, 
+    but is associated with potential risks.
 ---
 
 ## Rebase vs. merge

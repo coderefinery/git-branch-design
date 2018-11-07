@@ -7,6 +7,9 @@ questions:
   - Why is the Git log history important?
 objectives:
   - Learn how to name branches.
+keypoints:
+  - Having one main development branch which is documented, tested and has logical commit history is 
+    useful to both developers and users.
 ---
 
 ## Branch naming
