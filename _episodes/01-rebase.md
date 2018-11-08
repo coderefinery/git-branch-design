@@ -8,6 +8,9 @@ questions:
   - What is the advantage of rebasing?
 objectives:
   - Obtain a mental representation of the rebase model.
+keypoints:
+  - Rebasing creates nice linear history without merge commits, 
+    but is associated with potential risks.
 ---
 
 ## Rebase vs. merge
@@ -47,9 +50,11 @@ $ git rebase master
 ### Advantages and disadvantages
 
 - `git rebase` makes "merges" producing a linear history.
+- `git merge` resolves all conflicts in a single commit, with `git rebase` each commit may need
+  conflict resolution.
 - `git rebase` may invalidate tests.
-- When somebody asks you to rebase your work to the work of somebody else you
-  know what this means (GitHub can do this automatically for you).
+- `git merge` preserves chronology of commits and creates explicit merge commits (unless fast-forward).
+- `git rebase` can change chronology of commits.
 - When working with others **do not rebase commits that other people depend on**
   (history has changed).
 - Reference: "Treehouse of Horror V: Time and Punishment", The Simpsons (1994).
