@@ -53,7 +53,8 @@ $ git rebase master
 - `git merge` resolves all conflicts in a single commit, with `git rebase` each commit may need
   conflict resolution.
 - `git rebase` may invalidate tests.
-- `git merge` creates history as it actually happened, `git rebase` shows a simpler linear history.
+- `git merge` preserves chronology of commits and creates explicit merge commits (unless fast-forward).
+- `git rebase` can change chronology of commits.
 - When working with others **do not rebase commits that other people depend on**
   (history has changed).
 - Reference: "Treehouse of Horror V: Time and Punishment", The Simpsons (1994).
