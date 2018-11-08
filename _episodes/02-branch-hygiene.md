@@ -17,7 +17,7 @@ keypoints:
 - Name your local branches such that you will recognize them 3 months later.
 - "test2", "foo", "debug", "mybranch" are not good branch names.
 - Give descriptive names to remote branches.
-- For topic branches we recommend to name them "author/topic" (example `joe/new-integrator`).
+- For feature branches we recommend to name them "author/topic" (example `joe/new-integrator`).
 - Then everybody knows who is to be contacted about this branch (e.g. stale branches).
 - Also you can easily find "your" branches:
 
