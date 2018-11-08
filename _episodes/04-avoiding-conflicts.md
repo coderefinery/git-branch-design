@@ -7,34 +7,62 @@ questions:
   - How should we organize branches to avoid conflicts?
 objectives:
   - Avoid conflicts, avoid double work, avoid losing patches.
+keypoints:
+  - Short-lived, well defined feature branches minimize risk of conflicts.
+  - Fix bugs on main development line, not in feature branches.
 ---
 
 ## Avoiding conflicts
 
+- Develop on feature branches!
 - Conflicts can be avoided if you think and talk with your colleagues before committing.
-- Think and plan to which branch you will commit to.
-- Fortran people: modifying common blocks often causes conflicts.
-- Modifying global data often causes conflicts.
 - Monolithic entangled spaghetti-code maximizes risk of conflicts.
 - Modular programming minimizes risk of conflicts.
-- Ball-of-mud branches for "everything" maximize risk of conflicts.
-- One branch for one task only.
 - Resolve conflicts early.
-- If the branch affects code that is likely to be modified by others, the
+- If a branch affects code that is likely to be modified by others, the
   branch should:
-  - be short-lived and/or merge often to the main development line
-  - merge the main development line often to stay up-to-date
+  - be short-lived and/or merge often to the main development line.
+  - merge the main development line often to stay up-to-date.
 
 ---
 
-## Develop separate features on separate branches
+## Develop on feature branches
+
+- Keeps bugs away from the main development line.
+- Divide and conquer: do not create a branch for "everything".
+- The more you do on one branch the longer it will take until you can reintegrate it, and vice versa
+
+### When is a good moment to merge?
+
+- Feature branches merge to `master` typically once (at the end of their lifetime).
+- But there may be good reasons for merging branches to `master` more often (release branch).
+- For modular projects with write-protected `master` and code review and very high discipline:
+    - You typically should not merge `master` except the occasional `git cherry-pick`.
+- For entangled projects where most of the development happens directly on `master`:
+    - It is good to merge `master` to your topic branch often to stay in sync with main development line.
+    - Merge conflicts should be resolved early.
+
+### How to test combinations of features?
+
+- I develop `feature-a`, my colleague develops `feature-b`.
+- Both are not ready yet to go into the main line.
+- How can we test their combination?
+- Do not cross-merge feature branches.
+- Reason: if `feature-a` becomes ready, it cannot be integrated to the main line
+  because it is then diluted with `feature-b`.
+- Test combinations on integration branches.
+- Integration branches only receive merges, we do not "work" on them.
+- Same holds for testing combinations with the main line.
+- The main line should ideally be an integration branch.
+
+---
+
+## Encountering a bug while working on a feature branch
 
 Common situation:
 
-- You create a branch for your new feature that you are working on.
-- While working on your feature you discover a defect or bug that has nothing to do
+- While working on your feature branch you discover a defect or bug that has nothing to do
   with your new feature.
-- Or you see some ugly code and want to clean it up.
 - You are a responsible developer and you do not want to leave this defect.
 - You decide to fix this defect right on your new branch "while at it".
 - This is probably a **bad idea** - why?
@@ -48,18 +76,17 @@ Common situation:
       with your new feature.
     - Before you commit a change, think: "who needs this change?".
     - Based on the answer select the appropriate branch.
-    - **In general apply changes as close to the trunk as possible.**
     - **Develop separate features on separate branches and be very strict and disciplined with this.**
 
 - Better solution
     - Fix it on `master`, so other developers can see it.
+    - More specifically, fix it on a `hotfix-X` branch and merge it to `master`.
     - Than merge it to your development/topic branch.
 
 ![]({{ site.baseurl }}/img/git-fix-2.svg)
 
 - Developing separate features on separate branches minimizes conflicts.
-- It makes branches shorter-lived.
-- This again minimizes conflicts.
+- It makes branches shorter-lived, which again minimizes conflicts.
 
 ---
 
@@ -86,7 +113,7 @@ What now?
 
 You want to move last three commits to a separate branch.
 
-First make sure that your working directory and index are empty.
+First make sure that your working directory and staging area are empty.
 
 Then create a new branch (e.g. `feature`):
 
@@ -115,39 +142,3 @@ Another job well done.
 
 ---
 
-## When is a good moment to merge?
-
-- Feature branches merge to `master` typically once (at the end of their lifetime).
-- But there may be good reasons for merging branches to `master` more often (release branch).
-- Never merge a feature branch into another feature branch (branch pollution; discuss why).
-- For modular projects with write-protected `master` and code review and very high discipline:
-    - You typically should not merge `master` except the occasional `git cherry-pick`.
-- For entangled projects where most of the development happens directly on `master`:
-    - It is good to merge `master` to your topic branch often to stay in sync with main development line.
-    - A Merge from `master` to your branch ideally should never conflict.
-    - But it will sometimes, resolve conflicts early.
-
----
-
-## Develop on feature branches
-
-- Keeps bugs away from the main development line.
-- Divide and conquer: do not create a branch for "everything".
-- The more you do on one branch the longer it will take until you can reintegrate it.
-- The more granular the branches, the shorter lived.
-- Talk with your colleagues to avoid conflicts.
-
-### How to test combinations of features?
-
-- I develop `feature-a`.
-- My colleague develops `feature-b`.
-- Both are not ready yet to go into the main line.
-- How can we test their combination?
-- Do not cross-merge feature branches.
-- Reason: if `feature-a` becomes ready, it cannot be integrated to the main line
-  because it is then diluted with `feature-b`.
-- It is easy to make soup out of vegetables, it is difficult to separate a vegetable out of a soup.
-- Test combinations on integration branches.
-- Integration branches only receive merges, we do not "work" on them.
-- Same holds for testing combinations with the main line.
-- The main line should ideally be an integration branch.
