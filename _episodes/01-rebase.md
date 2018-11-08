@@ -50,7 +50,7 @@ $ git rebase master
 ### Advantages and disadvantages
 
 - `git rebase` makes "merges" producing a linear history.
-- `git merge` resolves all conflicts in a single commit, with `git rebase` each commit being rebased needs 
+- `git merge` resolves all conflicts in a single commit, with `git rebase` each commit may need
   conflict resolution.
 - `git rebase` may invalidate tests.
 - `git merge` creates history as it actually happened, `git rebase` shows a simpler linear history.
