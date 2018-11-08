@@ -80,11 +80,31 @@ And in a second step squash the commits into one:
 Verify the steps and the result with `git status` and `git log`.
 Verify the history and also that the script still works after the operation.
 
-
-### Hints
+#### Hints
 
 ```shell
 $ git rebase master         # moves current branch commits behind master
 $ git reset --soft abc123   # move current branch pointer back to commit abc123
                             # and stage all modifications that came after abc123
 ```
+
+### Bonus exercise
+
+Try redoing the exercise with an *interactive rebase* instead of a soft reset.
+Note that you first have to undo what you did in the previous exercise.
+
+#### Hints
+
+```shell
+$ git reset --hard abc123   # move current branch pointer back to commit abc123
+      	    	   	    # and *throw away* all modifications
+$ git rebase -i master	    # interactive rebase
+```
+
+### Bonus question
+
+- Imagine that the haiku repository was a real project that you were going to contribute to. 
+- By rebasing and squashing commits, were you doing "the right thing"?
+
+
+
