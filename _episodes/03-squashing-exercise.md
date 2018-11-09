@@ -91,7 +91,8 @@ $ git reset --soft abc123   # move current branch pointer back to commit abc123
 ### Bonus exercise
 
 Try redoing the exercise with an *interactive rebase* instead of a soft reset.
-Note that you first have to undo what you did in the previous exercise.
+Note that you first have to undo what you did in the previous exercise, and do a 
+`git pull` to retrieve the original commits on the haiku branch.
 
 #### Hints
 
