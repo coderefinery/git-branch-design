@@ -2,7 +2,7 @@
 layout: episode
 title: "Avoiding conflicts"
 teaching: 10
-exercises: 0
+exercises: 10
 questions:
   - How should we organize branches to avoid conflicts?
 objectives:
@@ -139,6 +139,48 @@ Another job well done.
 - **Not** with `git reset` because we do not want to change the history for commits that others depend on.
 - We use `git revert` which creates **new** commits that revert changes.
 - `git revert` does not modify past commits.
+
+---
+
+## Exercises 
+
+In the following exercises you will practice cherry-picking commits, testing combinations of 
+features, and rewinding the `master` branch.  
+
+Start by cloning a fresh copy of the [guacamole repository](https://github.com/coderefinery/guacamole.git):
+
+```shell
+$ git clone https://github.com/coderefinery/guacamole.git
+```
+
+### Exercise 1: Cherry-picking commits
+
+This guacamole project has two branches, `master` and `dev`. You will fix a "bug"
+on the `dev` branch, and then cherry-pick it to `master`.
+
+ - First checkout the `dev` branch.
+ - Then add onion at the top of the ingredients file (fixing the bug).
+ - Realize that you committed to the wrong branch.
+ - Switch to the `master` branch, and cherry-pick the bugfix from the `dev` branch.
+ - Inspect the result with `git graph`.
+
+### Exercise 2: Testing combinations of features
+
+Use the same repository as in the previous exercise.  
+
+ - Create two new branches from the `master` branch.
+ - In each, add a new ingredient to ingredients.txt.
+ - Create a new branch `integration` from one of the new branches.
+ - Merge the other branch into the `integration` branch. Resolve conflicts if needed.
+ - Inspect the result with `git graph`.
+ 
+
+### Exercise 3: Rewinding the local master branch
+
+ - Make a couple of commits on the `master` branch.
+ - Realize that these commits should have been on a new branch `feature`.
+ - Create a new branch `feature`, and rewind the `master branch`.
+ - Inspect the result with `git graph`.
 
 ---
 
