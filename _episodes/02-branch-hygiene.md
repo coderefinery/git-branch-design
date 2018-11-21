@@ -28,25 +28,23 @@ $ git branch -r | grep joe
 - Name bugfix branches after the issue/ticket (e.g. `issue-137`).
 - For release branches we recommend e.g. `release/2.x` or `stable-2.x`.
 
----
-
-## Always have only one main development line
-
-- Document where it is (there can be many forks, do not leave doubt about where the main line is).
 - Organize branches according to features, not according to groups of people.
-- Good: branches `feature-a`, `feature-b`, `feature-c`.
-- Bad: branches `stockholm`, `san-francisco`, `helsinki`.
-- Reason: `stockholm`, `san-francisco`, and `helsinki` will either diverge
+  - Good: branches `feature-a`, `feature-b`, `feature-c`.
+  - Bad: branches `stockholm`, `san-francisco`, `helsinki`.
+  - Reason: `stockholm`, `san-francisco`, and `helsinki` will either diverge
   (three main development lines) or somebody will spend a heroic effort to keep
   them synchronized.
 
 ---
 
-## Every commit on the main development line should build/compile
+## The main development line
 
-- Sometimes you want to find a commit in the past that broke some functionality.
-- When using `git bisect` it is very helpful if all commits build/compile.
-- There is no reason to commit broken or unfinished code to the main development line: for this we have branches.
+- Always have only one main development line.
+- Document where it is (there can be many forks, leave no doubt about where it is).
+- Every commit on the main development line should build/compile.
+- Reason: Sometimes you want to find a commit in the past that broke some functionality.
+  - When using `git bisect` it is very helpful if all commits build/compile.
+  - There is no reason to commit broken or unfinished code to the main development line: for this we have branches.
 
 ---
 
