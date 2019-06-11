@@ -147,10 +147,10 @@ Another job well done.
 In the following exercises you will practice cherry-picking commits, testing combinations of 
 features, and rewinding the `master` branch.  
 
-Start by cloning a fresh copy of the [guacamole repository](https://github.com/coderefinery/guacamole.git):
+Start by cloning a fresh copy of the [guacamole repository](https://github.com/coderefinery/recipe.git):
 
 ```shell
-$ git clone https://github.com/coderefinery/guacamole.git
+$ git clone https://github.com/coderefinery/recipe.git
 ```
 
 ### Exercise 1: Cherry-picking commits
